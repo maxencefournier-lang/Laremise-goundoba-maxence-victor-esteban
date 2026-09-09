@@ -17,4 +17,4 @@ services:
       - laremise-data:/var/lib/postgresql/data
 
 volumes:
-  adapi-data:
+  laremise-data:
