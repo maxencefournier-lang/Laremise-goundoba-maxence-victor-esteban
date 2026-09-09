@@ -5,7 +5,7 @@
 services:
   db:
     image: postgres:16
-    container_name: adapi-db
+    container_name: laremise-db
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -13,8 +13,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./adapi.sql:/docker-entrypoint-initdb.d/adapi.sql
-      - adapi-data:/var/lib/postgresql/data
+      - ./laremise.sql:/docker-entrypoint-initdb.d/laremise.sql
+      - laremise-data:/var/lib/postgresql/data
 
 volumes:
   adapi-data:
