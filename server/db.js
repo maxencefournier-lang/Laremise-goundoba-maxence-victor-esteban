@@ -1,8 +1,13 @@
 import pg from "pg";
-import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+
+// Le .env est à la racine, pas dans server/ : chemin calculé depuis ce fichier
+dotenv.config({ path: path.resolve(import.meta.dirname, "../.env") });
 
 const { Pool } = pg;
 
+// Réserve de connexions partagée par toutes les routes
 export const pool = new Pool({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
