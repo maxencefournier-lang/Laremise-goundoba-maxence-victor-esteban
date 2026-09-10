@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dépendances
 node_modules/
 
@@ -5,4 +6,12 @@ node_modules/
 .env
 
 # macOS
+=======
+.env
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+*.log
+>>>>>>> main
 .DS_Store

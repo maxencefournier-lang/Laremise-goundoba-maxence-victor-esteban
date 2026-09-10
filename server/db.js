@@ -1,9 +1,14 @@
 import pg from "pg";
 import dotenv from "dotenv";
+<<<<<<< HEAD
 import path from "path";
 
 // Le .env est à la racine, pas dans server/ : chemin calculé depuis ce fichier
 dotenv.config({ path: path.resolve(import.meta.dirname, "../.env") });
+=======
+
+dotenv.config({ path: "../.env" });
+>>>>>>> main
 
 const { Pool } = pg;
 
