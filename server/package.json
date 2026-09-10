@@ -1,24 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "pg": "^8.23.0",
-    "swagger-ui-express": "^5.0.1"
-  }
-=======
     "name": "server",
     "version": "1.0.0",
     "description": "",
@@ -42,5 +22,4 @@
     "devDependencies": {
         "nodemon": "^3.1.14"
     }
->>>>>>> main
 }
