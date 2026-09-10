@@ -12,6 +12,11 @@ router.get("/", async (req, res) => {
         GROUP BY statut
     `);
 
+        const objetsParStatut = statuts.rows.map((ligne) => ({
+            statut: ligne.statut,
+            nombre: Number(ligne.nombre),
+        }));
+
         // Poids total reçu
         const poidsTotal = await pool.query(`
         SELECT SUM(poids_kg) AS total
@@ -26,18 +31,17 @@ router.get("/", async (req, res) => {
     `);
 
         res.status(200).json({
-            objets_par_statut: statuts.rows,
-            poids_total_recu: poidsTotal.rows[0].total,
-            poids_detourne: poidsDetourne.rows[0].total,
+            objets_par_statut: objetsParStatut,
+            poids_total_recu: Number(poidsTotal.rows[0].total),
+            poids_detourne: Number(poidsDetourne.rows[0].total),
         });
     } catch (error) {
         console.error(error);
 
         return res.status(500).json({
-            error: "Errour interne du serveur",
+            error: "Erreur interne du serveur",
         });
     }
 });
 
-router.get;
 export default router;
