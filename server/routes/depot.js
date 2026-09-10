@@ -42,6 +42,43 @@ router.post("/", async (req, res) => {
     }
 });
 
+// GET /depots/:id — un dépôt, son donateur et ses objets
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // 1) Le dépôt et son donateur
+        const depot = await pool.query(
+            `SELECT d.id, d.date_depot, d.type,
+                    p.id AS personne_id, p.nom, p.prenom
+             FROM depot d
+             JOIN personne p ON p.id = d.personne_id
+             WHERE d.id = $1`,
+            [id]
+        );
+
+        // Aucune ligne : la ressource n'existe pas
+        if (depot.rows.length === 0) {
+            return res.status(404).json({ erreur: "Dépôt introuvable" });
+        }
+
+        // 2) Ses objets — LEFT JOIN inutile ici : requête séparée
+        const objets = await pool.query(
+            `SELECT id, libelle, poids_kg, etat_arrivee, statut, categorie_id
+             FROM objet
+             WHERE depot_id = $1
+             ORDER BY id`,
+            [id]
+        );
+
+        // Décomposition : les champs du dépôt + le tableau d'objets
+        res.json({ ...depot.rows[0], objets: objets.rows });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erreur: "Erreur serveur" });
+    }
+});
+
 // POST /depots/:id/objets — ajoute un objet à un dépôt existant
 router.post("/:id/objets", async (req, res) => {
     const { libelle, poids_kg, etat_arrivee, categorie_id } = req.body;
