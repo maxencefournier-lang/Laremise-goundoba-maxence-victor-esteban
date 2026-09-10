@@ -7,7 +7,6 @@ function App() {
       prenom: 'Lucas',
       nom: 'Martin',
       role: 'Bénévole',
-      email: 'lucas@test.fr',
       image: 'https://i.pravatar.cc/150?img=12',
     },
     {
@@ -15,7 +14,6 @@ function App() {
       prenom: 'Emma',
       nom: 'Bernard',
       role: 'Responsable',
-      email: 'emma@test.fr',
       image: 'https://i.pravatar.cc/150?img=47',
     },
     {
@@ -23,7 +21,6 @@ function App() {
       prenom: 'Nathan',
       nom: 'Robert',
       role: 'Bénévole',
-      email: 'nathan@test.fr',
       image: 'https://i.pravatar.cc/150?img=33',
     },
   ]
@@ -48,10 +45,9 @@ function App() {
             </span>
 
             <p className="job">{user.role}</p>
-            <p className="email">{user.email}</p>
 
             <button onClick={() => console.log(user)}>
-              Voir le profil
+              Se connecter
             </button>
           </div>
         ))}
