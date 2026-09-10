@@ -23,5 +23,42 @@ export default function DepotDetail() {
   if (erreur) return <p>Erreur : {erreur}</p>;
   if (!depot) return <p>Dépôt introuvable</p>;
 
-  return <pre>{JSON.stringify(depot, null, 2)}</pre>;
+  return (
+    <div>
+      <h1>Dépôt du {new Date(depot.date_depot).toLocaleDateString("fr-FR")}</h1>
+
+      <p>
+        Donateur : {depot.prenom} {depot.nom}
+        <br />
+        Type : {depot.type}
+      </p>
+
+      <h2>Objets ({depot.objets.length})</h2>
+
+      {depot.objets.length === 0 ? (
+        <p>Aucun objet dans ce dépôt pour l'instant.</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Libellé</th>
+              <th>Poids (kg)</th>
+              <th>État à l'arrivée</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            {depot.objets.map((objet) => (
+              <tr key={objet.id}>
+                <td>{objet.libelle}</td>
+                <td>{objet.poids_kg}</td>
+                <td>{objet.etat_arrivee}</td>
+                <td>{objet.statut}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 }
