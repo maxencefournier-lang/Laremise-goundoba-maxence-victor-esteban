@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { request } from "../api/client.js";
 import AjoutObjetForm from "../components/AjoutObjetForm.jsx";
 
@@ -34,6 +34,10 @@ export default function DepotDetail() {
 
   return (
     <div>
+        <nav>
+            <Link to="/depots/nouveau">+ Nouveau dépôt</Link>
+        </nav>
+        
       <h1>Dépôt du {new Date(depot.date_depot).toLocaleDateString("fr-FR")}</h1>
 
       <p>

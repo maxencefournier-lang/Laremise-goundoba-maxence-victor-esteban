@@ -72,6 +72,7 @@ export default function AjoutObjetForm({ depotId, onAjout }) {
         <input
           type="number"
           step="0.01"
+          min="0.01"
           value={poids}
           onChange={(e) => setPoids(e.target.value)}
           required
