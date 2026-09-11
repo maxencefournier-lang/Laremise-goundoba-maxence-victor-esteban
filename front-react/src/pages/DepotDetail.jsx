@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 import { useParams, Link } from "react-router-dom";
 import { request } from "../api/client.js";
 import AjoutObjetForm from "../components/AjoutObjetForm.jsx";
@@ -29,7 +29,7 @@ export default function DepotDetail() {
 
   // Les trois sorties avant l'affichage normal
   if (chargement) return <p>Chargement…</p>;
-  if (erreur) return <p>Erreur : {erreur}</p>;
+    if (erreur) return <p className="erreur">Erreur : {erreur}</p>;
   if (!depot) return <p>Dépôt introuvable</p>;
 
   return (

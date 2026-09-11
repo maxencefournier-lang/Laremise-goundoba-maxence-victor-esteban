@@ -48,7 +48,7 @@ export default function NouveauDepot() {
     <form onSubmit={handleSubmit}>
       <h1>Nouveau dépôt</h1>
 
-      {erreur && <p>Erreur : {erreur}</p>}
+        {erreur && <p className="erreur">Erreur : {erreur}</p>}
 
       <label>
         Donateur

@@ -55,7 +55,7 @@ export default function AjoutObjetForm({ depotId, onAjout }) {
     <form onSubmit={handleSubmit}>
       <h3>Ajouter un objet</h3>
 
-      {erreur && <p>Erreur : {erreur}</p>}
+        {erreur && <p className="erreur">Erreur : {erreur}</p>}
 
       <label>
         Libellé
