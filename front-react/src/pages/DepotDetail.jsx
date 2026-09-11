@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { request } from "../api/client.js";
+import AjoutObjetForm from "../components/AjoutObjetForm.jsx";
 
+// Écran fiche d'un dépôt : entête, liste de ses objets, formulaire d'ajout
 export default function DepotDetail() {
   const { id } = useParams();
 
@@ -9,16 +11,23 @@ export default function DepotDetail() {
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
 
-  useEffect(() => {
+  // Sortie de l'effet pour être rappelable après un ajout d'objet
+  function chargerDepot() {
     setChargement(true);
     setErreur(null);
 
-    request(`/depots/${id}`)
+    return request(`/depots/${id}`)
       .then((donnees) => setDepot(donnees))
       .catch((err) => setErreur(err.message))
       .finally(() => setChargement(false));
+  }
+
+  // Au montage, et à chaque changement d'id dans l'URL
+  useEffect(() => {
+    chargerDepot();
   }, [id]);
 
+  // Les trois sorties avant l'affichage normal
   if (chargement) return <p>Chargement…</p>;
   if (erreur) return <p>Erreur : {erreur}</p>;
   if (!depot) return <p>Dépôt introuvable</p>;
@@ -35,6 +44,7 @@ export default function DepotDetail() {
 
       <h2>Objets ({depot.objets.length})</h2>
 
+      {/* État vide séparé du tableau : une liste vide n'est pas une erreur */}
       {depot.objets.length === 0 ? (
         <p>Aucun objet dans ce dépôt pour l'instant.</p>
       ) : (
@@ -59,6 +69,9 @@ export default function DepotDetail() {
           </tbody>
         </table>
       )}
+
+      {/* onAjout passe la fonction, sans parenthèses : sinon boucle infinie */}
+      <AjoutObjetForm depotId={id} onAjout={chargerDepot} />
     </div>
   );
 }
