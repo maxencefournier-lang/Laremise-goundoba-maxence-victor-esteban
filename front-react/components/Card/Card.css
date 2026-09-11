@@ -23,7 +23,7 @@ body {
     padding: 50px 20px;
 }
 
-h1{
+h1 {
     padding-bottom: 50px;
 }
 
@@ -73,6 +73,16 @@ h1{
     background: #7c3aed;
     border-radius: 0 0 10px 10px;
 } */
+
+/* image profil */
+.card .img {
+    width: 70px;
+    height: 80px;
+    background: #6b64f3;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 25px;
+}
 
 /* NOM */
 .name {

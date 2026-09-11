@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react"
 
-function UserCard({ user }) {
+function UserCard({ benevole }) {
     return (
         <div className="card">
-            <div className="card-border-top"></div>
+
+            <div class="img"></div>
 
             <span className="name">
-                {user.prenom} {user.nom}
+                {benevole.prenom} {benevole.nom}
             </span>
 
-            <button onClick={() => console.log(user)}>
+            <button onClick={() => console.log(benevole)}>
                 Se connecter
             </button>
+
         </div>
     )
 }
