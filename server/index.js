@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import objetRouter, { testInfo } from "./routes/objet.js";
 import categorieRouter from "./routes/categorie.js";
 //import swaggerUi from "swagger-ui-express";
@@ -15,6 +16,8 @@ const app = express();
 //app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
+
+app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
 
 app.post("/test", (req, res) => {
     console.log("req.body =", req.body);

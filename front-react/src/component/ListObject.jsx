@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { ObjectCard } from "./ObjectCard";
 
 
-
-
 export function ListObject (){
     const API = 'http://localhost:3000';
     const [objects, setObjects] = useState([])
@@ -18,7 +16,8 @@ export function ListObject (){
             }
             loadObjects()
         }, [])
-
+        
+        // console.log(objects)
         return(
             <>
             <ul>
@@ -27,8 +26,7 @@ export function ListObject (){
                         key={object.id}
                         libelle={object.libelle}
                         depot_id={object.depot_id}
-                        categorie_id={object.categorie_id}
-                    >
+                        categorie_id={object.categorie_id}>
                     </ObjectCard>
                     
                 ))}
