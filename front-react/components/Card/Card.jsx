@@ -4,7 +4,7 @@ function UserCard({ benevole }) {
     return (
         <div className="card">
 
-            <div class="img"></div>
+            <div className="img"></div>
 
             <span className="name">
                 {benevole.prenom} {benevole.nom}
