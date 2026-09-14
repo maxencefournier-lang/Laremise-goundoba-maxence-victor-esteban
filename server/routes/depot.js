@@ -91,6 +91,10 @@ router.post("/:id/objets", async (req, res) => {
         });
     }
 
+    if (poids_kg <= 0) {
+    return res.status(400).json({ erreur: "Le poids doit être supérieur à 0" });
+}
+
     try {
         const { rows } = await pool.query(
             `INSERT INTO objet
