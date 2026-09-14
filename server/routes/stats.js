@@ -11,10 +11,10 @@ router.get("/", async (req, res) => {
         FROM objet
         GROUP BY statut
     `);
-
-        const objetsParStatut = statuts.rows.map((ligne) => ({
-            statut: ligne.statut,
-            nombre: Number(ligne.nombre),
+        // Transforme les résultats SQL et convertit le nombre de string en number
+        const objetsParStatut = statuts.rows.map((statutRow) => ({
+            statut: statutRow.statut,
+            nombre: Number(statutRow.nombre),
         }));
 
         // Poids total reçu
@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
 
         res.status(200).json({
             objets_par_statut: objetsParStatut,
+            // Convertit les valeurs de string en number
             poids_total_recu: Number(poidsTotal.rows[0].total),
             poids_detourne: Number(poidsDetourne.rows[0].total),
         });
