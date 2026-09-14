@@ -2,6 +2,10 @@ import { useEffect, useState } from "react"
 import './App.css'
 import UserCard from '../components/Card/Card'
 import '../components/Card/Card.css'
+import { Routes, Route } from "react-router-dom";
+import { ListObject } from "./component/ListObject";
+import DepotDetail from "./pages/DepotDetail.jsx";
+import NouveauDepot from "./pages/NouveauDepot.jsx";
 
 function App() {
     const [benevoles, setBenevoles] = useState([])
@@ -24,6 +28,8 @@ function App() {
     }, [])
 
     return (
+
+        <>
         <main className="page">
             <h1>Bénévoles</h1>
 
@@ -36,6 +42,13 @@ function App() {
                 ))}
             </div>
         </main>
+
+        <Routes>
+            <Route path="/objets" element={<ListObject />} />
+            <Route path="/depots/nouveau" element={<NouveauDepot />} />
+            <Route path="/depots/:id" element={<DepotDetail />} />
+        </Routes>
+        </>
     )
 }
 

@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-
 import objetRouter, { testInfo } from "./routes/objet.js";
 import categorieRouter from "./routes/categorie.js";
 import personneRouter from "./routes/personne.js";
@@ -10,11 +9,14 @@ import benevolRouter from "./routes/benevole.js";
 
 const app = express();
 
-app.use(cors({
-    origin: "http://localhost:5173"
-}));
+// Autorise le front Vite à appeler l'API (origines différentes : 5173/5174 vs 3000)
+app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
 
 app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Bonjour La Remise");
+});
 
 app.use("/objets", objetRouter);
 app.use("/personnes", personneRouter);

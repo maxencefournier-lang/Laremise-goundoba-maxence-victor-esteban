@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const{ rows } = await pool.query(`
-        SELECT objet.libelle AS objet, categorie.libelle
+        SELECT objet.id, objet.libelle AS objet, categorie.libelle AS categorie
         FROM objet
         JOIN categorie ON objet.categorie_id = categorie.id
         `);
