@@ -21,14 +21,18 @@ export function ListObject (){
 
         return(
             <>
+            <ul>
                 {objects.map((object) => (
-                    <ObjectCard>
+                    <ObjectCard 
                         key={object.id}
                         libelle={object.libelle}
                         depot_id={object.depot_id}
                         categorie_id={object.categorie_id}
+                    >
                     </ObjectCard>
+                    
                 ))}
+                </ul>
             </>
         )
 }
