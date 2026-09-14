@@ -3,6 +3,20 @@ import { useParams, Link } from "react-router-dom";
 import { request } from "../api/client.js";
 import AjoutObjetForm from "../components/AjoutObjetForm.jsx";
 
+const LIBELLE_ETAT = {
+  bon_etat: "Bon état",
+  a_reparer: "À réparer",
+  hors_service: "Hors service",
+};
+
+const LIBELLE_STATUT = {
+    recycle: "Recyclé",
+    en_rayon: "Mis en rayon",
+    arrive: "Arrivé",
+    en_reparation: "En réparation",
+    vendu: "Vendu",
+}
+
 // Écran fiche d'un dépôt : entête, liste de ses objets, formulaire d'ajout
 export default function DepotDetail() {
   const { id } = useParams();
@@ -66,8 +80,8 @@ export default function DepotDetail() {
               <tr key={objet.id}>
                 <td>{objet.libelle}</td>
                 <td>{objet.poids_kg}</td>
-                <td>{objet.etat_arrivee}</td>
-                <td>{objet.statut}</td>
+                <td>{LIBELLE_ETAT[objet.etat_arrivee] ?? objet.etat_arrivee}</td>
+                <td>{LIBELLE_STATUT[objet.statut] ?? objet.statut}</td>
               </tr>
             ))}
           </tbody>
