@@ -1,10 +1,13 @@
-export default function StatCard({ titre, valeur, unite }) {
+import "./StatCard.css";
+
+export default function StatCard({ titre, valeur, unite = "" }) {
     return (
-        <article>
-            <h3>{titre}</h3>
-            <strong>
+        <article className="stat-card">
+            <h3 className="stat-card__title">{titre}</h3>
+
+            <p className="stat-card__value">
                 {valeur} {unite}
-            </strong>
+            </p>
         </article>
     );
 }
