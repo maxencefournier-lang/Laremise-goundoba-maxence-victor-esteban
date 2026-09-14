@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ObjectCard } from "./ObjectCard";
+import { data } from "react-router-dom";
 
 
 export function ListObject (){
@@ -8,29 +9,36 @@ export function ListObject (){
     // usestate est une fonction qui prend en paramètre 
     // [valeur, fonction] décomposition de tableau où que l'on nomme comme on veut ici, object et setObject
 
-        useEffect(() => {
+    try {
+            useEffect(() => {
             async function loadObjects() {
                 const response = await fetch(`${API}/objets`)
                 const data = await response.json()
+                console.log(data)
                 setObjects(data)
             }
             loadObjects()
         }, [])
         
-        // console.log(objects)
         return(
             <>
             <ul>
                 {objects.map((object) => (
-                    <ObjectCard 
+                    <li>
+                        <ObjectCard 
                         key={object.id}
-                        libelle={object.libelle}
-                        depot_id={object.depot_id}
-                        categorie_id={object.categorie_id}>
+                        libelle={object.objet}
+                        depot={object.depot}
+                        categorie_id={object.categorie}
+                        statut={object.statut}>
                     </ObjectCard>
+                    </li>
                     
                 ))}
                 </ul>
             </>
         )
+    } catch (error) {
+        
+    }
 }

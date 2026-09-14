@@ -1,4 +1,4 @@
-export function ObjectCard({libelle, depot_id, poids_kg, etat_arrivee, categorie_id}) {
+export function ObjectCard({libelle, depot, categorie_id, statut}) {
     return(
         
         <>
@@ -6,12 +6,10 @@ export function ObjectCard({libelle, depot_id, poids_kg, etat_arrivee, categorie
             {/* <img 
             src="/objets.png" alt={libelle} 
             /> */}
-            <h2>{libelle}</h2>
-                <h3>ID du Depot :  {depot_id}</h3>
-                    <p> Poids : {poids_kg} kg</p>
-                    <p>Etat à l'arrivée : {etat_arrivee}</p>
-                    <p>Categorie : {categorie_id}</p>
-                    
+            <p>{libelle}</p>
+            <p>N° du Depot : {depot}</p>
+            <p>Categorie : {categorie_id}</p>
+            <p>Statut : {statut} </p>
         </div>
         </>
     )
