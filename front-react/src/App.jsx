@@ -1,14 +1,20 @@
 import './App.css'
 import { ListObject} from './component/ListObject';
+import { Routes, Route } from "react-router-dom";
+import DepotDetail from "./pages/DepotDetail.jsx";
+import NouveauDepot from "./pages/NouveauDepot.jsx";
 
 
-function App() {
 
-    return (
+// Plan de navigation du front
+export default function App() {
+  return (
     <>
+    <Routes>
+      <Route path="/depots/nouveau" element={<NouveauDepot />} />
+      <Route path="/depots/:id" element={<DepotDetail />} />
+    </Routes>
     <ListObject ></ListObject>
     </>
-    )
+  );
 }
-
-export default App
