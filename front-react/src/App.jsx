@@ -7,13 +7,17 @@ import DepotDetail from "./pages/DepotDetail.jsx";
 import NouveauDepot from "./pages/NouveauDepot.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
+import AppLayout from "./layouts/AppLayout.jsx";
+
 export default function App() {
     return (
         <Routes>
-            <Route path="/objets" element={<ListObject />} />
-            <Route path="/depots/nouveau" element={<NouveauDepot />} />
-            <Route path="/depots/:id" element={<DepotDetail />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route element={<AppLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/objets" element={<ListObject />} />
+                <Route path="/depots/nouveau" element={<NouveauDepot />} />
+                <Route path="/depots/:id" element={<DepotDetail />} />
+            </Route>
         </Routes>
     );
 }
