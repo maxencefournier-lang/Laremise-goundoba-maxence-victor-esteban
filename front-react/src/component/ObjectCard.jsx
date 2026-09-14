@@ -1,21 +1,17 @@
-import { useState, useEffect } from "react";
-
-
-
-export function ObjectCard(object) {
+export function ObjectCard({libelle, depot_id, poids_kg, etat_arrivee, categorie_id}) {
     return(
         
         <>
         <div className = "carte">
-            <h2>{object.libelle}</h2>
-                <h3>ID du Depot :  {object.depot_id}</h3>
-                    <p> Poids : {object.poids_kg}</p>
-                    <p>Etat à l'arrivée : {object.etat_arrivee}</p>
-                    <p>Statut : {object.statut}</p>
-                    <p>Prix : {object.prix}</p>
-                    <p>Date de mise en rayon :{object.date_mise_en_rayon}</p>
-                    <p>Categorie : {object.categorie_id}</p>
-                    <p>Prix payé : {object.prix_paye}</p>
+            {/* <img 
+            src="/objets.png" alt={libelle} 
+            /> */}
+            <h2>{libelle}</h2>
+                <h3>ID du Depot :  {depot_id}</h3>
+                    <p> Poids : {poids_kg} kg</p>
+                    <p>Etat à l'arrivée : {etat_arrivee}</p>
+                    <p>Categorie : {categorie_id}</p>
+                    
         </div>
         </>
     )
