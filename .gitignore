@@ -5,3 +5,5 @@ dist/
 **/dist/
 *.log
 .DS_Store
+**/mock
+**/button
