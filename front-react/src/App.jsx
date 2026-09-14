@@ -1,20 +1,17 @@
-import './App.css'
-import { ListObject} from './component/ListObject';
+import "./App.css";
+
 import { Routes, Route } from "react-router-dom";
+
+import { ListObject } from "./component/ListObject";
 import DepotDetail from "./pages/DepotDetail.jsx";
 import NouveauDepot from "./pages/NouveauDepot.jsx";
 
-
-
-// Plan de navigation du front
 export default function App() {
-  return (
-    <>
-    <Routes>
-      <Route path="/depots/nouveau" element={<NouveauDepot />} />
-      <Route path="/depots/:id" element={<DepotDetail />} />
-    </Routes>
-    <ListObject ></ListObject>
-    </>
-  );
+    return (
+        <Routes>
+            <Route path="/objets" element={<ListObject />} />
+            <Route path="/depots/nouveau" element={<NouveauDepot />} />
+            <Route path="/depots/:id" element={<DepotDetail />} />
+        </Routes>
+    );
 }
