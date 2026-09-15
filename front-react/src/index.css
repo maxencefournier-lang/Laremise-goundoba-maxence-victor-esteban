@@ -9,8 +9,16 @@ body {
 
 /* Largeur de lecture confortable */
 #root {
+<<<<<<< HEAD
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+=======
   max-width: 800px;
   margin: 0 auto;
+>>>>>>> main
 }
 
 /* Formulaires : un champ par ligne */
