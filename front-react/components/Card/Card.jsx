@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 
 function UserCard({ benevole }) {
     
@@ -12,7 +13,10 @@ function UserCard({ benevole }) {
             </span>
 
             <button onClick={() => console.log(benevole)}>
+                
+                <NavLink className="buttonBenev" to="/dashboard">
                 Se connecter
+                </NavLink>
             </button>
 
         </div>
