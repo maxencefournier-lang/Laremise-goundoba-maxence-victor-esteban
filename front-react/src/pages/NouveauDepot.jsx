@@ -14,7 +14,7 @@ export default function NouveauDepot() {
   const [envoi, setEnvoi] = useState(false);
   const [erreur, setErreur] = useState(null);
 
-  // Charge les donateurs une seule fois, au montage
+  // [] : ne s'exécute qu'une fois, au montage
   useEffect(() => {
     request("/personnes")
       .then((donnees) => {
@@ -45,46 +45,51 @@ export default function NouveauDepot() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h1>Nouveau dépôt</h1>
 
-        {erreur && <p className="erreur">Erreur : {erreur}</p>}
+      {erreur && <p className="erreur">Erreur : {erreur}</p>}
 
-      <label>
-        Donateur
-        <select
-          value={personneId}
-          onChange={(e) => setPersonneId(e.target.value)}
-        >
-          {personnes.map((personne) => (
-            <option key={personne.id} value={personne.id}>
-              {personne.prenom} {personne.nom}
-            </option>
-          ))}
-        </select>
-      </label>
+      {/* Bloc de saisie, cohérent avec la fiche de dépôt */}
+      <section className="bloc">
+        <form onSubmit={handleSubmit}>
+          <label>
+            Donateur
+            <select
+              value={personneId}
+              onChange={(e) => setPersonneId(e.target.value)}
+            >
+              {personnes.map((personne) => (
+                <option key={personne.id} value={personne.id}>
+                  {personne.prenom} {personne.nom}
+                </option>
+              ))}
+            </select>
+          </label>
 
-      <label>
-        Date du dépôt
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-      </label>
+          <label>
+            Date du dépôt
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </label>
 
-      <label>
-        Lieu
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="boutique">En boutique</option>
-          <option value="domicile">À domicile</option>
-        </select>
-      </label>
+          <label>
+            Lieu
+            <select value={type} onChange={(e) => setType(e.target.value)}>
+              <option value="boutique">En boutique</option>
+              <option value="domicile">À domicile</option>
+            </select>
+          </label>
 
-      <button type="submit" disabled={envoi}>
-        {envoi ? "Création en cours…" : "Créer le dépôt"}
-      </button>
-    </form>
+          <button type="submit" disabled={envoi}>
+            {envoi ? "Création en cours…" : "Créer le dépôt"}
+          </button>
+        </form>
+      </section>
+    </div>
   );
 }
