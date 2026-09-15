@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+
+    background-color: #c4e8ea;
+    border: 1px solid #786363;
+    border-radius: 1rem;
+
+    font-weight: 600;
+}
