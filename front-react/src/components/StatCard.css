@@ -1,0 +1,14 @@
+.stat-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.stat-card__title {
+    margin-top: 0;
+}
+
+.stat-card__value {
+    margin-bottom: 0;
+    font-weight: bold;
+}

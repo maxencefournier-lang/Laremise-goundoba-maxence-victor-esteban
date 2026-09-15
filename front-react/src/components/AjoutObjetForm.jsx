@@ -58,24 +58,25 @@ export default function AjoutObjetForm({ depotId, onAjout }) {
         {erreur && <p className="erreur">Erreur : {erreur}</p>}
 
       <label>
-        Libellé
         <input
-          type="text"
-          value={libelle}
-          onChange={(e) => setLibelle(e.target.value)}
-          required
+            type="text"
+            value={libelle}
+            onChange={(e) => setLibelle(e.target.value)}
+            placeholder="Ex : Escabeau 3 marches"
+            required
         />
       </label>
 
       <label>
         Poids (kg)
         <input
-          type="number"
-          step="0.01"
-          min="0.01"
-          value={poids}
-          onChange={(e) => setPoids(e.target.value)}
-          required
+            type="number"
+            step="0.01"
+            min="0.01"
+            value={poids}
+            onChange={(e) => setPoids(e.target.value)}
+            placeholder="2.70"
+            required
         />
       </label>
 
