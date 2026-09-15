@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
 import { request } from "../api/client.js";
+import { useParams } from "react-router-dom";
 import AjoutObjetForm from "../components/AjoutObjetForm.jsx";
 
 // Correspondance entre les valeurs de l'énumération et ce que lit l'utilisatrice
@@ -49,9 +49,7 @@ export default function DepotDetail() {
 
   return (
     <div>
-      <nav>
-        <Link to="/depots/nouveau">+ Nouveau dépôt</Link>
-      </nav>
+      
 
       {/* Bloc de consultation : le dépôt et ses objets */}
       <section className="bloc">
