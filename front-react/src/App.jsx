@@ -6,13 +6,11 @@ import DepotDetail from "./pages/DepotDetail.jsx";
 import NouveauDepot from "./pages/NouveauDepot.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";
-import {ObjectDetail} from "./component/ObjectDetail.jsx"
+
 
 export default function App() {
     return (
         <>
-        <ObjectDetail></ObjectDetail>
-        <ListObject></ListObject> 
         <Routes>
             <Route element={<AppLayout />}>
                 <Route path="/dashboard" element={<Dashboard />} />

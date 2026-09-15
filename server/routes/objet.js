@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     
     const { rows } = await pool.query(`
-        SELECT objet.id, objet.libelle AS objet, etat_arrivee, poids_kg, depot.id AS numero_depot, categorie.libelle, statut
+        SELECT objet.id, objet.libelle AS libelle, etat_arrivee, poids_kg, depot.id AS numero_depot, categorie.libelle AS categorie, statut
         FROM objet
         JOIN categorie ON objet.categorie_id = categorie.id
         JOIN depot ON objet.depot_id = depot.id
