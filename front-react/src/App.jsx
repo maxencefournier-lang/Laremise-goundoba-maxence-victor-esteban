@@ -3,14 +3,16 @@ import { Button } from '../components/button/button'
 
 function App() {
 
-  return (
-    <>
-      Coucou 
+    return (
+        <>
+            Coucou
 
-      <Button label="Salut" type="test"/>
-      <Button label="Je test"/>
-    </>
-  )
+            <Button label="Salut" type="test" />
+            <Button label="Je test">
+                <span>Salut</span>
+            </Button>
+        </>
+    )
 }
 
 export default App

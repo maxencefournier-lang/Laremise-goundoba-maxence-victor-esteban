@@ -1,7 +1,7 @@
-export function Button({label, type}) {
+export function Button({label, type, children}) {
     return (
         <button>
-            {label}, {type}
+            {label}, {type}, {children}
         </button>
     )
 }
