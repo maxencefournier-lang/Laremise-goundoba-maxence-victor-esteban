@@ -42,6 +42,24 @@ router.post("/", async (req, res) => {
     }
 });
 
+// GET /depots — la liste de tous les dépôts, du plus récent au plus ancien
+router.get("/", async (req, res) => {
+    try {
+        const { rows } = await pool.query(
+            `SELECT d.id, d.date_depot, d.type,
+                    p.id AS personne_id, p.nom, p.prenom
+             FROM depot d
+             JOIN personne p ON p.id = d.personne_id
+             ORDER BY d.date_depot DESC`
+        );
+
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erreur: "Erreur serveur" });
+    }
+});
+
 // GET /depots/:id — un dépôt, son donateur et ses objets
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
