@@ -12,9 +12,10 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const{ rows } = await pool.query(`
-        SELECT objet.id, objet.libelle AS objet, categorie.libelle AS categorie
+        SELECT objet.id, objet.libelle AS objet, categorie.libelle AS categorie, depot.id AS depot, statut
         FROM objet
         JOIN categorie ON objet.categorie_id = categorie.id
+        JOIN depot ON objet.depot_id = depot.id
         `);
 
         res.status(200).json(rows);
@@ -23,17 +24,16 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     
     const { rows } = await pool.query(`
-        SELECT objet.id, objet.libelle AS objet, categorie.libelle, depot.id AS numero_depot, personne.nom, personne.prenom 
+        SELECT objet.id, objet.libelle AS objet, etat_arrivee, poids_kg, depot.id AS numero_depot, categorie.libelle, statut
         FROM objet
         JOIN categorie ON objet.categorie_id = categorie.id
         JOIN depot ON objet.depot_id = depot.id
-        JOIN personne ON depot.personne_id = personne.id
         WHERE objet.id = $1`, [req.params.id])
     
     // const recupId = Number(req.params.id)
     // const foundId = objet.find((objet) => objet.id === recupId)
-    
-    if(req.params.id ?? null) {
+    console.log(rows)
+    if(rows.length === 0) {
         return res.status(404).json({erreur : "Aucun élément n'a été trouvé"})
     }
 

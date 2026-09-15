@@ -6,6 +6,7 @@ import { data } from "react-router-dom";
 export function ListObject (){
     const API = 'http://localhost:3000';
     const [objects, setObjects] = useState([])
+    const [selectedObject, setSelectedObject] = useState([false])
     // usestate est une fonction qui prend en paramètre 
     // [valeur, fonction] décomposition de tableau où que l'on nomme comme on veut ici, object et setObject
 
@@ -14,7 +15,6 @@ export function ListObject (){
             async function loadObjects() {
                 const response = await fetch(`${API}/objets`)
                 const data = await response.json()
-                console.log(data)
                 setObjects(data)
             }
             loadObjects()
@@ -24,16 +24,13 @@ export function ListObject (){
             <>
             <ul>
                 {objects.map((object) => (
-                    <li>
-                        <ObjectCard 
+                        <ObjectCard
                         key={object.id}
                         libelle={object.objet}
                         depot={object.depot}
                         categorie_id={object.categorie}
                         statut={object.statut}>
-                    </ObjectCard>
-                    </li>
-                    
+                        </ObjectCard>
                 ))}
                 </ul>
             </>

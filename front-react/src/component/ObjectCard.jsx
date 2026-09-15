@@ -1,13 +1,12 @@
-export function ObjectCard({libelle, depot, categorie_id, statut}) {
+export function ObjectCard({libelle, categorie_id, statut}) {
     return(
         
         <>
-        <div className = "carte">
+        <div className = "card">
             {/* <img 
             src="/objets.png" alt={libelle} 
             /> */}
             <p>{libelle}</p>
-            <p>N° du Depot : {depot}</p>
             <p>Categorie : {categorie_id}</p>
             <p>Statut : {statut} </p>
         </div>
