@@ -6,44 +6,13 @@ import { Routes, Route } from "react-router-dom";
 import { ListObject } from "./component/ListObject";
 import DepotDetail from "./pages/DepotDetail.jsx";
 import NouveauDepot from "./pages/NouveauDepot.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
 
 function App() {
-    const [benevoles, setBenevoles] = useState([])
-
-    useEffect(() => {
-        async function chargerBenevoles() {
-            try {
-                const reponse = await fetch('http://localhost:3000/benevole')
-                const donnees = await reponse.json()
-
-                console.log("Données reçues :", donnees)
-
-                setBenevoles(donnees)
-            } catch (erreur) {
-                console.error("Erreur :", erreur)
-            }
-        }
-
-        chargerBenevoles()
-    }, [])
-
     return (
-
         <>
-        <main className="page">
-            <h1>Bénévoles</h1>
-
-            <div className="users-container">
-                {benevoles.map((benevole) => (
-                    <UserCard
-                        key={benevole.id}
-                        benevole={benevole}
-                    />
-                ))}
-            </div>
-        </main>
-
         <Routes>
+            <Route path="/" element={<AuthPage />} />
             <Route path="/objets" element={<ListObject />} />
             <Route path="/depots/nouveau" element={<NouveauDepot />} />
             <Route path="/depots/:id" element={<DepotDetail />} />
