@@ -1,0 +1,28 @@
+.card {
+    margin : 20px;
+    padding: 5px;
+    background: cadetblue;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 100px;
+}
+
+.modal-overlay{
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+}
+
+.card-detail{
+    border: solid black;
+    padding : 80px;
+    border-radius: 15px;
+    background-color: cadetblue;
+
+}

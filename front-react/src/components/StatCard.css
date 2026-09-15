@@ -1,7 +1,9 @@
 .stat-card {
     padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 0.2rem solid #ddd;
+    border-radius: 1rem;
+
+    background-color: #c4e8ea;
 }
 
 .stat-card__title {
