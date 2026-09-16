@@ -1,13 +1,46 @@
 .card {
-    margin : 20px;
-    padding: 5px;
+    margin: 0;
+    padding: 20px;
     background: cadetblue;
     color: white;
     cursor: pointer;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter {
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+.objects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.objects-list .card {
+    flex: 0 0 calc((100% - 60px) / 3);
+    margin: 0;
+}
+
 
 .modal-overlay{
     height: 100vh;
@@ -17,12 +50,14 @@
     align-items: center;
     position: fixed;
     inset: 0;
+    z-index: 1000;
 }
 
 .card-detail{
     border: solid black;
     padding : 80px;
     border-radius: 15px;
-    background-color: cadetblue;
+    background-color: rgb(230, 170, 170);
+    z-index: 1001;
 
 }
