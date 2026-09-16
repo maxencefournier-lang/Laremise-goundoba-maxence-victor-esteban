@@ -10,7 +10,6 @@
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
-
 .filter-section {
     display: flex;
     align-items: center;
@@ -41,7 +40,7 @@
 
 .modal-overlay{
     height: 100vh;
-    background-color: rgba(0,0,0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +49,9 @@
     z-index: 1000;
 }
 
-.card-detail{
+.card-detail {
     border: solid black;
-    padding : 80px;
+    padding: 80px;
     border-radius: 15px;
     background-color: rgb(230, 170, 170);
     z-index: 1001;

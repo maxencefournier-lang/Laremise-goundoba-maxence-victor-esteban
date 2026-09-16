@@ -9,7 +9,11 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink className="navbar__link" to="/objets">
-                Objets
+                Liste d'objets
+            </NavLink>
+
+            <NavLink className="navbar__link" to="/depots">
+                Liste de dépôts
             </NavLink>
 
             <NavLink className="navbar__link" to="/depots/nouveau">
