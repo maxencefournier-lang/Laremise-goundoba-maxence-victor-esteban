@@ -19,6 +19,7 @@
 }
 
 .filter {
+    padding: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
 }
@@ -56,7 +57,7 @@
     border: solid black;
     padding : 80px;
     border-radius: 15px;
-    background-color: cadetblue;
+    background-color: rgb(230, 170, 170);
     z-index: 1001;
 
 }
