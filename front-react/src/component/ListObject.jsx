@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { ObjectCard } from "./objectCard/ObjectCard";
-import { data } from "react-router-dom";
 import { ObjectDetail } from "./ObjectDetail";
 import { ObjectFilter } from "./ObjectFilter";
 
+export function ListObject () {
 
-export function ListObject (){
     const API = 'http://localhost:3000';
     const [objects, setObjects] = useState([]);  // usestate est une fonction qui prend en paramètre , [valeur, fonction] décomposition de tableau où que l'on nomme comme on veut ici, object et setObject
     const [selectedObject, setSelectedObject] = useState(null);
@@ -28,15 +27,46 @@ export function ListObject (){
         }
     }
 
+
     useEffect(() => {
         loadObjects()
     }, [])
 
+
     async function loadObjectDetail(objectId) {
-        const response = await fetch(`http://localhost:3000/objets/${objectId}`)
+
+        const response = await fetch(
+            `${API}/objets/${objectId}`
+        )
         const data = await response.json()
         console.log(data[0])
         setSelectedObject(data[0])
+    }
+
+
+    // Modification du statut
+    async function modifierStatut(objectId, statut) {
+
+        await fetch(
+            `${API}/objets/${objectId}/statut`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    statut
+                })
+            }
+        )
+
+        // Recharge les objets après modification
+        loadObjects()
+
+        // Recharge le détail
+        loadObjectDetail(objectId)
     }
 
     function onCardSelect(objectId) {
@@ -66,13 +96,17 @@ export function ListObject (){
             <div className="list-card" ></div>
             {
                 selectedObject && (
-                    <ObjectDetail libelle={selectedObject.libelle} 
-                    poids_kg={selectedObject.poids_kg}
-                    categorie={selectedObject.categorie}
-                    statut={selectedObject.statut}
-                    etat_arrivee={selectedObject.etat_arrivee}
-                    numero_depot={selectedObject.numero_depot}
-                    onClose={onClose}
+
+                    <ObjectDetail
+                        objectId={selectedObject.id}
+                        libelle={selectedObject.libelle}
+                        poids_kg={selectedObject.poids_kg}
+                        categorie={selectedObject.categorie}
+                        statut={selectedObject.statut}
+                        etat_arrivee={selectedObject.etat_arrivee}
+                        numero_depot={selectedObject.numero_depot}
+                        onClose={onClose}
+                        onStatutChange={modifierStatut}
                     />
                 )
             }
@@ -90,7 +124,8 @@ export function ListObject (){
                         >
                         </ObjectCard>
                 ))}
-                </ul>
-            </>
-        )
+
+            </ul>
+        </>
+    )
 }

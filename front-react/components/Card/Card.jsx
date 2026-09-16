@@ -1,10 +1,23 @@
-import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function UserCard({ benevole }) {
-    
+
+    const navigate = useNavigate();
+
+    function seConnecter() {
+
+        // On sauvegarde le bénévole sélectionné
+        localStorage.setItem(
+            "benevoleConnecte",
+            JSON.stringify(benevole)
+        );
+
+        // Puis on va sur le dashboard
+        navigate("/dashboard");
+    }
+
     return (
-        <div className="card">
+        <div className="cardAuth">
 
             <div className="img"></div>
 
@@ -12,15 +25,12 @@ function UserCard({ benevole }) {
                 {benevole.prenom} {benevole.nom}
             </span>
 
-            <button onClick={() => console.log(benevole)}>
-                
-                <NavLink className="buttonBenev" to="/dashboard">
+            <button onClick={seConnecter}>
                 Se connecter
-                </NavLink>
             </button>
 
         </div>
-    )
+    );
 }
 
-export default UserCard
+export default UserCard;
