@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
         FROM objet
         JOIN categorie ON objet.categorie_id = categorie.id
         JOIN depot ON objet.depot_id = depot.id
+        ORDER BY objet.id ASC
         `);
 
         res.status(200).json(rows);

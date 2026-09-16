@@ -44,7 +44,7 @@ h1 {
 }
 
 /* CARTE */
-.card {
+.cardAuth {
     position: relative;
     width: 230px;
     min-height: 300px;
@@ -60,7 +60,7 @@ h1 {
         box-shadow 0.25s ease;
 }
 
-.card:hover {
+.cardAuth:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
@@ -76,7 +76,7 @@ h1 {
 } */
 
 /* image profil */
-.card .img {
+.cardAuth .img {
     width: 70px;
     height: 80px;
     background: #6b64f3;
@@ -101,7 +101,7 @@ h1 {
 }
 
 /* BOUTON */
-.card button {
+.cardAuth button {
     margin-top: auto;
     padding: 9px 20px;
     border: none;
@@ -113,7 +113,7 @@ h1 {
     transition: 0.2s;
 }
 
-.card button:hover {
+.cardAuth button:hover {
     background: #6d28d9;
     transform: scale(1.05);
 }
