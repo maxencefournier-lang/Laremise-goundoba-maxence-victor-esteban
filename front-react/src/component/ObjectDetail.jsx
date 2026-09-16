@@ -14,7 +14,7 @@ export function ObjectDetail({
 
     const [nouveauStatut, setNouveauStatut] = useState(statut)
 
-    return(
+    return (
         <>
 
             <div className="modal-overlay">
@@ -67,12 +67,10 @@ export function ObjectDetail({
                         </select>
                     </p>
                     <button
-                        onClick={() =>
-                            onStatutChange(
-                                objectId,
-                                nouveauStatut
-                            )
-                        }
+                        onClick={async () => {
+                            await onStatutChange(objectId, nouveauStatut);
+                            onClose();
+                        }}
                     >
                         Enregistrer
                     </button>
