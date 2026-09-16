@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 import { ObjectCard } from "./objectCard/ObjectCard";
 import { data } from "react-router-dom";
 import { ObjectDetail } from "./ObjectDetail";
+import { ObjectFilter } from "./ObjectFilter";
 
 
 export function ListObject (){
     const API = 'http://localhost:3000';
-    const [objects, setObjects] = useState([])
-    const [selectedObject, setSelectedObject] = useState(null)
-    // usestate est une fonction qui prend en paramètre 
-    // [valeur, fonction] décomposition de tableau où que l'on nomme comme on veut ici, object et setObject
+    const [objects, setObjects] = useState([]);  // usestate est une fonction qui prend en paramètre , [valeur, fonction] décomposition de tableau où que l'on nomme comme on veut ici, object et setObject
+    const [selectedObject, setSelectedObject] = useState(null);
+    const[categoryFilter, setCategoryFilter] = useState("");
+    const[statutFilter, setStatutFilter] = useState("");
+
+    const selectedFilter = objects.filter((object) => {
+        const categoryOk = categoryFilter === "" || object.categorie === categoryFilter;
+        const statutOk = statutFilter === "" || object.statut === statutFilter;
+        return categoryOk && statutOk;
+    });   
+    
     async function loadObjects() {
         try {
             const response = await fetch(`${API}/objets`)
@@ -35,11 +43,26 @@ export function ListObject (){
         loadObjectDetail(objectId)
     }
     function onClose(){
-    setSelectedObject(null)
-}
+        setSelectedObject(null)
+    }
+    
+    function onCategoryFilter(categorie){
+        setCategoryFilter(categorie)
+    }
+
+    function onStatutFilter(statut){
+        setStatutFilter(statut)
+    }
         
         return(
             <>
+            <section className="filter-container">
+                <ObjectFilter
+                onCategoryFilter={onCategoryFilter}
+                onStatutFilter={onStatutFilter}
+                resultCount={selectedFilter.length}/>
+            </section>
+
             <div className="list-card" ></div>
             {
                 selectedObject && (
@@ -53,8 +76,9 @@ export function ListObject (){
                     />
                 )
             }
-            <ul>
-                {objects.map((object) => (
+            
+            <ul className="objects-list">
+                {selectedFilter.map((object) => (
                         <ObjectCard
                             key={object.id}
                             objectId={object.id}
